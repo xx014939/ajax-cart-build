@@ -238,6 +238,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'my-cart.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
@@ -276,8 +277,9 @@
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
     {%- endif -%}
+    
 
-    {% sections 'header-group' %}
+    {% sections 'header-group' %} 
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
@@ -334,5 +336,23 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+      {% comment %} Ajax Cart {% endcomment %}
+  
+      <script type="application/json" data-ajax-cart-initial-state >
+      {{ cart | json }}
+    </script>
+      
+    <script type="module">
+      import '{{ "liquid-ajax-cart-v1.11.0.js" | asset_url }}';
+    </script>
+    
+    <script type="application/json" data-ajax-cart-configuration >
+      {
+        "addToCartCssClass": "js-my-cart-open"
+      }
+    </script>
   </body>
+  <div class="slide-cart-container">
+  {% section 'my-cart' %}
+</div>
 </html>
