@@ -241,7 +241,11 @@
       <a href="{{ routes.cart_url }}"
       data-ajax-cart-toggle-class-button="js-my-cart-open">
       My Cart
-    </a> 
+    </a>
+    
+    <button class="open-ajax-cart">
+    My Ajax Cart
+  </button>
     <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <noscript class="small-hide medium-hide">
