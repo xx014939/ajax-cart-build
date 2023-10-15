@@ -116,10 +116,11 @@ async function increaseQuantity () {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({quantity: 1, id: `${this.id}`})
-      });
-      const result = await increaseResponse.json();
+    });
     
-      console.log(result); // remove in production
+    const result = await increaseResponse.json();
+
+    console.log(result); // remove in production
 
     // Update quantity in HTML
     let currentQuantity = document.getElementById(`${this.id}-quantity`)
@@ -171,7 +172,7 @@ async function decreaseQuantity () {
         // Remove item from cart
         let deletedItem = document.getElementById(`${this.id}-container`)
         deletedItem.remove()
-        }
+    }
 
     updateTotal()
 }
