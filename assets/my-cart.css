@@ -169,16 +169,6 @@ body {
     right: 0px;
 }
 
-.js-my-cart-open .slide-cart-container {
-    flex: 0 0 480px;
-    width: 480px;
-    /* display: block; */
-    max-width: 100%;
-    transform: translateX(100%);
-    transition: transform 1s;
-    z-index: 9999;
-    opacity: 1;
-}
 
 @media (max-width:768px) {
     .js-my-cart-open .slide-cart-container {
